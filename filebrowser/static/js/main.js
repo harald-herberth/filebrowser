@@ -317,7 +317,7 @@ $(document).ready(function(){
         $("#file-upload").trigger('click');
     });
 
-    function uoload(form_data){
+    function upload(form_data){
         $.ajax({
             url: "/upload",
             type: "POST",
@@ -327,7 +327,7 @@ $(document).ready(function(){
             processData: false,
             success: function(data){
                 if (data == 1){
-                    loaddata(folder, "");
+                    loaddata(sessionStorage.getItem("folder-names"), "");
                     $('.overlay').hide();
                     $('#upload-modal').hide();
                     // $('#file-upload').reset();
@@ -346,7 +346,7 @@ $(document).ready(function(){
         form_data.append("file1", $("#file-upload")[0].files[0]);
         form_data.append('folder', folder);
 
-        uoload(form_data);
+        upload(form_data);
     });
 
     // upload file with drag and drop
@@ -369,7 +369,7 @@ $(document).ready(function(){
         form_data.append("file1", e.dataTransfer.files[0]);
         form_data.append('folder', folder);
 
-        uoload(form_data);
+        upload(form_data);
     });
 
     function folderlist(folder, folderName){

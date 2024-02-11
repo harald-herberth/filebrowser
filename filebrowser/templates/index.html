@@ -21,7 +21,7 @@
         </style>
         <link href="{{ url_for('static', filename='css/file.css')}}" rel="stylesheet">
         <link href="{{ url_for('static', filename='css/file1.css')}}" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="../static/js/jquery.min.js"></script>
     </head>
 
     <body>
@@ -219,14 +219,18 @@
                     } else {
                         clearTimeout(timer);  //prevent single-click action
                         console.log('Double Click');  //perform double-click action
-
+                        if (sessionStorage.getItem("select") == "true"){
+                                $("#dropdown").find(".action:lt(4)").remove();
+                                $(".counter").remove();
+                                $("[aria-selected]").removeAttr("aria-selected");
+                                sessionStorage.setItem("select","");
+                                sessionStorage.setItem("selected-item", "");
+                        }
                         var isfile = $this.hasClass("file");
                         if (isfile){
                             console.log("it is file");
                         }else{
                             var name = $this.attr('aria-label');
-                            var host = "http://127.0.0.1:5000/";
-                            var url = host + name;
                             var folder = sessionStorage.getItem("folder-names");
                             $.ajax({
                                 url : "/load-data",
