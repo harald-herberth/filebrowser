@@ -13,13 +13,13 @@ $(document).ready(function(){
     function unselecte(){
         sessionStorage.setItem("selected-item", "");
         sessionStorage.setItem("select", "")
-        $("#dropdown").find(".action:lt(4)").remove();
-        $(".counter").remove();
+        $("nav").find(".action:lt(4)").remove();
+        //$(".counter").remove();
     }
 
     function loaddata(folder, name){
         $("#loading").show();
-      $.ajax({
+        $.ajax({
         url : "/load-data",
         type : "POST",
         data : JSON.stringify({name : name, folder : folder}),
@@ -64,8 +64,8 @@ $(document).ready(function(){
             sessionStorage.setItem("folder-names",$(this).attr("href"));
 
             if (sessionStorage.getItem("select") == "true"){
-                $("#dropdown").find(".action:lt(4)").remove();
-                $(".counter").remove();
+                $("nav").find(".action:lt(4)").remove();
+                //$(".counter").remove();
             }
         }
     });

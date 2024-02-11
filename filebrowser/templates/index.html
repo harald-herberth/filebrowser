@@ -19,8 +19,8 @@
                 display: none;
             }
         </style>
-        <link href="{{ url_for('static', filename='css/file.css')}}" rel="stylesheet">
-        <link href="{{ url_for('static', filename='css/file1.css')}}" rel="stylesheet">
+        <link href="../static/css/file.css" rel="stylesheet">
+        <link href="../static/css/file1.css" rel="stylesheet">
         <script src="../static/js/jquery.min.js"></script>
     </head>
 
@@ -34,7 +34,13 @@
                         <button aria-label="New folder" title="New folder" id="new-folder" class="action"><i class="material-icons">create_new_folder</i><span>New folder</span></button>
                         <button aria-label="New file" title="New file" id="new-file" class="action"><i class="material-icons">note_add</i><span>New file</span></button>
                     </div>
-                </nav>
+                    <button aria-label="Download" title="Download" class="action" id="download-button">
+                        <i class="material-icons">file_download</i><span>Download</span>
+                    </button>
+                    <button aria-label="Upload" title="Upload" class="action" id="upload-button">
+                        <i class="material-icons">file_upload</i><span>Upload</span>
+                    </button>
+</nav>
                 <main>
                     <div>
                         <div class="breadcrumbs">
@@ -51,6 +57,7 @@
                         </div>
                         
                         <div id="first">
+                            <!--
                             <header>
                                 <img src="" />
                                 <button aria-label="Toggle sidebar" title="Toggle sidebar" class="action menu-button">
@@ -65,12 +72,6 @@
                                     <button aria-label="Switch view" title="Switch view" id="view_list" class="action">
                                         <i id="list-icon" class="material-icons">view_list</i><span>Switch view</span>
                                     </button>
-                                    <button aria-label="Download" title="Download" class="action" id="download-button">
-                                        <i class="material-icons">file_download</i><span>Download</span>
-                                    </button>
-                                    <button aria-label="Upload" title="Upload" class="action" id="upload-button">
-                                        <i class="material-icons">file_upload</i><span>Upload</span>
-                                    </button>
                                     <button aria-label="Info" title="Info" id="info" class="action">
                                         <i class="material-icons">info</i><span>Info</span>
                                     </button>
@@ -83,7 +84,8 @@
                                 </button>
                                 <div class="overlay" style="display: none;"></div>
                             </header>
-                            <div id="listing" class="mosaic">
+                            -->
+                        <div id="listing" class="mosaic">
                                 <div class="myheader">
                                     <div class="item header">
                                         <div></div>
@@ -196,8 +198,8 @@
                             console.log('Single Click'); //perform single-click action
 
                             if ($this.attr("aria-selected") == "true"){
-                                $("#dropdown").find(".action:lt(4)").remove();
-                                $(".counter").remove();
+                                $("nav").find(".action:lt(4)").remove();
+                                //$(".counter").remove();
                                 $this.removeAttr("aria-selected");
                                 sessionStorage.setItem("select","");
                                 sessionStorage.setItem("selected-item", "");
@@ -207,8 +209,8 @@
                                 if (sessionStorage.getItem("select") == "true"){
                                     $('[aria-label="' + sessionStorage.getItem("selected-item") + '"]').removeAttr("aria-selected");
                                 }else{
-                                    $("#dropdown").prepend(action);
-                                    $("#download-button").append(counter);
+                                    $("nav").prepend(action);
+                                    //$("#download-button").append(counter);
                                     sessionStorage.setItem("select","true");
                                 }
                                 sessionStorage.setItem("selected-item",$this.attr("aria-label"));
@@ -220,8 +222,8 @@
                         clearTimeout(timer);  //prevent single-click action
                         console.log('Double Click');  //perform double-click action
                         if (sessionStorage.getItem("select") == "true"){
-                                $("#dropdown").find(".action:lt(4)").remove();
-                                $(".counter").remove();
+                                $("nav").find(".action:lt(4)").remove();
+                                //$(".counter").remove();
                                 $("[aria-selected]").removeAttr("aria-selected");
                                 sessionStorage.setItem("select","");
                                 sessionStorage.setItem("selected-item", "");
