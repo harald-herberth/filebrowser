@@ -590,8 +590,8 @@ table tr > :last-child {
     width: 90%;
     max-height: 95%;
     z-index: 99999;
-    -webkit-animation: show 0.1s forwards;
-    animation: show 0.1s forwards;
+    #-webkit-animation: show 0.1s forwards;
+    #animation: show 0.1s forwards;
 }
 .card > * > :first-child {
     margin-top: 0;
@@ -716,8 +716,8 @@ table tr > :last-child {
     height: 100%;
     width: 100%;
     z-index: 9999;
-    -webkit-animation: show 0.1s forwards;
-    animation: show 0.1s forwards;
+    #-webkit-animation: show 0.1s forwards;
+    #animation: show 0.1s forwards;
 }
 .file-list {
     max-height: 50vh;
